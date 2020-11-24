@@ -13,13 +13,13 @@ def getMessageText(update):
 	message_text.lower()
 	return message_text
 
-# get last update
+# get last record messsage update
 def lastUpdate(req):
 	response = requests.get(req + "getUpdates")
 	response = response.json()
 	result = response["result"]
 	total_updates = len(result) - 1
-	return result[total_updates]	# get last record messsage update
+	return result[total_updates]
 
 # send message
 def sendMessage(chat_id, message_text):
