@@ -119,17 +119,18 @@ def main():
     update_id = lastUpdate(url)["update_id"]
     while True:
         update = lastUpdate(url)
+        user_reply=getMessageText(update)
         if update_id == update["update_id"]:
-            user_reply=getMessageText(update)
+            if user_reply == "help":
+                sendMessage(getChatId(update), "untuk pemesanan. hint: 'order *baju* *harga yang sepakat* *jumlah*'")           
             harga_tawar = [int(s) for s in str.split(user_reply) if s.isdigit()]
             jumlah_baju = [int(s) for s in str.split(user_reply) if s.isdigit()]
             bot_respon = replyMessage(user_reply,harga_tawar, jumlah_baju)
             sendMessage(getChatId(update), bot_respon)
             # if user_reply == "hi" or user_reply == "halo":
-            if user_reply == "help":
-                sendMessage(getChatId(update), "untuk pemesanan. hint: 'order *baju* *harga yang sepakat* *jumlah*'")
-            else:
-                sendMessage(getChatId(update), "Maaf, aku belum mengerti maksud kamu ka, chat ulang saja ka. Atau ketik 'help'")
+            
+            # else:
+            #     sendMessage(getChatId(update), "Maaf, aku belum mengerti maksud kamu ka, chat ulang saja ka. Atau ketik 'help'")
             update_id += 1
 
 main()
