@@ -42,8 +42,9 @@ def sendMessage(chat_id, message_text):
 
 # reply message
 def replyMessage(text, harga_twr, jml_baju, baju1, baju2):
-
+	# proses
 	text = StemmingText.stemmingText(text)
+	# proses tokenize
 	tokens = word_tokenize(text)
 
 	reply = ""
@@ -54,7 +55,7 @@ def replyMessage(text, harga_twr, jml_baju, baju1, baju2):
 
 		# reply greeting
 		if word in UserBotInteraction.USER_GREETINGS:
-			reply += random.choice(UserBotInteraction.BOT_GREETINGS) + " "
+			reply += random.choice(UserBotInteraction.BOT_GREETINGS) + ". "
 		if any(w in list_word for w in UserBotInteraction.USER_HOW_ARE_YOU_1) and any(w in list_word for w in UserBotInteraction.USER_HOW_ARE_YOU_2):
 			reply += random.choice(UserBotInteraction.BOT_HOW_ARE_YOU)
 
@@ -110,8 +111,6 @@ def replyMessage(text, harga_twr, jml_baju, baju1, baju2):
 		)
 	elif any(w in tokens for w in ['fix']) or any(w in tokens for w in ['oke']):
 		reply += "Ketik 'final order *baju* *harga yang sepakat* *jumlah*' untuk membeli"
-	# else:
-	# 	reply += "Maaf, aku belum mengerti maksud kamu. Coba chat ulang aja ka."
 
 	return reply
 
