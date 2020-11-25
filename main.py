@@ -13,7 +13,7 @@ from model import UserBotInteraction
 from controller import StemmingText 
 
 # TOKEN API
-url = "https://api.telegram.org/bot1453757504:AAF9MM28UU62NGRvphRPa8091_Vm78RvDu0/"
+url = "https://api.telegram.org/bot1475966158:AAG55_LakcRnde2olpyGn2PaxV-wH051zG0/"
 
 # get chat id
 def getChatId(update):
@@ -134,7 +134,7 @@ def main():
 
 		if update_id == update["update_id"]:
 			if user_reply == "/start":
-				sendMessage(getChatId(update), "Selamat datang Dinego, silahkan beli baju yang anda inginkan. Kalau harga tidak cocok, boleh dinego kok!\n\nKetik 'beli' untuk mulai membeli atau 'beli baju'")
+				sendMessage(getChatId(update), "Selamat datang Dinego, silahkan beli baju yang anda inginkan. Kalau harga tidak cocok, boleh dinego kok!\n\nKetik 'beli' atau 'beli baju' untuk mulai membeli")
 			elif user_reply == "/help":
 				sendMessage(getChatId(update), "")           
 			else:
