@@ -14,5 +14,5 @@ BOT_BASA_BASI_1=['eh jangan dong']
 BOT_FAREWELL = ['bye', 'sampai jumpa lagi']
 
 # User "Thank You" & Bot "You Are Welcome"
-USER_THANK_YOU = ['makasih', 'trimakasih']
+USER_THANK_YOU = ['makasih', 'trimakasih', 'thx', 'thank', 'thanks']
 BOT_YOU_ARE_WELCOME = ['sama-sama', 'terima kasih kembali']
