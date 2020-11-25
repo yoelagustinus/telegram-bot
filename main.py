@@ -116,15 +116,15 @@ def replyMessage(text, harga_twr, jml_baju, baju1, baju2):
 
 # main
 def main():
-	MIN_VALUE_BAJU_1 = 100000
-	MIN_VALUE_BAJU_2 = 135000
+	MIN_HARGA_TAWAR_BAJU_1 = 100000
+	MIN_HARGA_TAWAR_BAJU_2 = 135000
 
 	update_id = lastUpdate(url)["update_id"]
 
 	while True:
 		# data produk baju
-		data_baju_1 = ['type01', 120000, MIN_VALUE_BAJU_1]
-		data_baju_2 = ['type02', 150000, MIN_VALUE_BAJU_2]
+		data_baju_1 = ['type01', 120000, MIN_HARGA_TAWAR_BAJU_1]
+		data_baju_2 = ['type02', 150000, MIN_HARGA_TAWAR_BAJU_2]
 
 		update = lastUpdate(url)
 		user_reply=getMessageText(update)
