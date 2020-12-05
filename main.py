@@ -82,7 +82,7 @@ def replyMessage(text, harga_twr, jml_baju, baju1, baju2):
 		if harga_twr[0] >= baju1[2]:
 			#masuk kesini
 			total_harga=harga_twr[0]*jml_baju[1]
-			insert_database('type01', harga_twr[0], jml_baju[1], total_harga)
+			insert_database('type01', jml_baju[1], total_harga)
 			reply+= "type01, totalnya jadi " + str(harga_twr[0]*jml_baju[1])
 		else:
 			reply+="wah harga tawarnya salah tuh kak"
