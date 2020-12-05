@@ -2,6 +2,7 @@ import requests as requests
 import random
 import string
 import re
+import mysql.connector
 
 # import word_tokenize from nltk module
 from nltk.tokenize import word_tokenize
@@ -79,11 +80,17 @@ def replyMessage(text, harga_twr, jml_baju, baju1, baju2):
 			reply += "bisa ka! fix ga?"
 	elif any(w in tokens for w in ['type01']) and any(w in tokens for w in ['final']) and any(w in tokens for w in ['order']):
 		if harga_twr[0] >= baju1[2]:
+			#masuk kesini
+			total_harga=harga_twr[0]*jml_baju[1]
+			insert_database('type01', harga_twr[0], jml_baju[1], total_harga)
 			reply+= "type01, totalnya jadi " + str(harga_twr[0]*jml_baju[1])
 		else:
 			reply+="wah harga tawarnya salah tuh kak"
 	elif any(w in tokens for w in ['type02']) and any(w in tokens for w in ['final']) and any(w in tokens for w in ['order']):
 		if harga_twr[0] >= baju2[2]:
+			#masuk kesini
+			total_harga=harga_twr[0]*jml_baju[1]
+			insert_database('type02', jml_baju[1], total_harga)
 			reply+= "type02, totalnya jadi " + str(harga_twr[0]*jml_baju[1])
 		else:
 			reply+="wah harga tawarnya salah tuh kak"
@@ -113,6 +120,21 @@ def replyMessage(text, harga_twr, jml_baju, baju1, baju2):
 		reply += "Ketik 'final order *baju* *harga yang sepakat* *jumlah*' untuk membeli"
 
 	return reply
+
+def insert_database(typeOrder, jumlah, total_harga):
+	mydb = mysql.connector.connect(
+		host="localhost",
+		user="root",
+		password="",
+		database="db_telegram"
+	)
+	mycursor = mydb.cursor()
+	sql = "INSERT INTO orderan (typeOrder, jumlah, total_harga) VALUES (%s,%s,%s)"
+	val = (typeOrder, jumlah, total_harga)
+	mycursor.execute(sql,val)
+	#https://www.w3schools.com/python/python_mysql_insert.asp
+	
+	mydb.commit()
 
 # main
 def main():
