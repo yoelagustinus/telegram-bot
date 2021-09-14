@@ -14,7 +14,7 @@ from model import UserBotInteraction
 from controller import StemmingText 
 
 # TOKEN API
-url = "https://api.telegram.org/bot1407989409:AAEdfppk66Kp8K2IsEHDOGS-kBHl6dR0X6M/getupdates"
+url = "https://api.telegram.org/bot1407989409:AAEdfppk66Kp8K2IsEHDOGS-kBHl6dR0X6M/getUpdates"
 
 # get chat id
 def getChatId(update):
@@ -165,4 +165,6 @@ def main():
 
 			update_id += 1
 
-main()
+
+if __name__ == "__main__":
+	main()
